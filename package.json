@@ -1,6 +1,6 @@
 {
   "name": "dsh-vst-sandbox-pack",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "DSH 的「沙箱执行器」模式：提示词以 user 消息注入，兼容会丢弃 system 字段的 API 中转站。",
   "type": "module",
   "main": "lib/index.js",

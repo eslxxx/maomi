@@ -1,7 +1,8 @@
 # dsh-vst-sandbox-pack — 「沙箱执行器」模式。
 #
 # 安装后会在模式列表里出现一个 preset（id: vst-sandbox）。该模式的系统提示词
-# 由 ./lib/prompt-inject.js 以 user 消息注入（见包内 prompt.md）：
+# 由 ./lib/prompt-inject.js 写入会话工作目录的 VST_SANDBOX.md，
+# 再由 agent-instructions 以基线消息读取（不写入 system 字段）：
 # 部分 API 中转站会丢弃请求体里的 system 字段，只有消息通道能稳定送达。
 #
 # 工具清单与 dsh-web-app 的 standard preset 保持一致，只去掉 planning 组
@@ -22,6 +23,12 @@
             name: '@deepseek-ai/dsh-agent-instructions'
             config:
               maxBytes: 65536
+              # 提示词由本包插件写入会话工作目录的 VST_SANDBOX.md，
+              # 再由本插件以基线消息读取（见 README 的“送达路径”）。
+              instructionFileCandidates:
+                - VST_SANDBOX.md
+                - AGENTS.md
+              localInstructionFileCandidates: []
           - id: time-context
             name: '@deepseek-ai/dsh-time-context'
           - id: tool-bash

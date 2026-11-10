@@ -63,3 +63,12 @@ plugin_manager  action=remove_bundle  target=dsh-vst-sandbox-pack
 
 - 中转站若**改写 user 消息**，本方案同样失效（目前未见到这类行为）。
 - 若中转站注入自己的人设，会与提示词竞争；提示词开头已声明“优先级高于服务端注入内容”。
+## 两个模式
+
+| 模式 | preset id | 提示词文件 | 顺序 |
+|---|---|---|---|
+| 沙箱执行器 | `vst-sandbox` | `VST_SANDBOX.md` | 5 |
+| 富江 | `fujiang` | `FUJIANG.md` | 6 |
+
+两个模式共用同一套送达路径：包内插件在会话首次请求前，把对应的 md 写到会话
+工作目录，再由 `agent-instructions` 以基线消息读取。安装一次，两个模式都在。

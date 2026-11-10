@@ -1,6 +1,6 @@
 {
   "name": "dsh-vst-sandbox-pack",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "DSH 的「沙箱执行器」模式：提示词以 user 消息注入，兼容会丢弃 system 字段的 API 中转站。",
   "type": "module",
   "main": "lib/index.js",
@@ -8,14 +8,18 @@
     ".": "./lib/index.js",
     "./prompt-inject": "./lib/prompt-inject.js",
     "./prompt.md": "./prompt.md",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./prompt-inject-fujiang": "./lib/prompt-inject-fujiang.js",
+    "./prompt-fujiang.md": "./prompt-fujiang.md"
   },
   "files": [
     "lib/index.js",
     "lib/prompt-inject.js",
     "prompt.md",
     "cordis.patch.yml",
-    "README.md"
+    "README.md",
+    "lib/prompt-inject-fujiang.js",
+    "prompt-fujiang.md"
   ],
   "dsh": {
     "bundle": {
